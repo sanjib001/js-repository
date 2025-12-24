@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>variable, datatype, oprator</title>
 </head>
+
 <body>
     <script>
-        console.log("hello world!!");   
+        console.log(x);
+        var x = 5;
+        console.log(x);
+
+        // console.log(z); //  cannot access 'z' before initialization as it is string.
+        let z = "sanjib";
+        console.log(z);
+        console.log("hello world!!");
+        greeting();
+        function greeting() {
+            console.log("hello world!!!!!")
+        }
+
+        var y = 10;
+        console.log(y); // 10
+        function test() {
+            let y = 20; //local scope, so the value of y will be 20 here only for this function
+            console.log(y); // 20
+        }
+        test();
+        console.log(y); // 10
+        console.log(typeof y); // number
+
+        var a = "sanjib"; 
+        console.log(a); // sanjib
+        function test2() {
+            a = "pandey"; // reassigning the value of a which is declared globally
+            console.log(a); // pandey
+        }
+        test2();
+        console.log(a); // pandey
+        console.log(typeof a); // string
+
+        console.log(typeof null); //object
+        console.log(typeof undefined); // undefined
     </script>
-    
+
 </body>
+
 </html>
