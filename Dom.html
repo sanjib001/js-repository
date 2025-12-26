@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" id="home">Home</a>
+                </li>
+                <li>
+                    <a href="#" id="contact">Contact</a>
+                </li>
+                <li>
+                    <a href="#" class="about">About</a>
+                </li>
+                <li>
+                    <p>Ok</p>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+
+        </section>
+        <aside>
+
+        </aside>
+    </main>
+    <footer>
+
+    </footer>
+
+    <script>
+        //DOM Manipulation Example
+
+        //grab the elements
+        //By ID
+        let home = document.getElementById("home");
+        let contact = document.getElementById("contact");
+        //By class name
+        let about = document.getElementsByClassName("about");
+        //By tag name
+        let para = document.getElementsByTagName("p");
+
+        //we can grab items using querySelector(it is newer way)
+        //let home = document.querySelector("#home");
+        //let about = document.querySelector(".about"); //while using this garbing method no need to use array index
+        //let para = document.querySelector("p");
+
+        //add event listeners 
+        home.addEventListener("click", (event) => {
+            home.textContent = "My Home";
+            home.style.color = "blue";
+            home.style.fontSize = "20px";
+        })
+
+        contact.addEventListener("click", (event) => {
+            contact.style.color = "yellow";
+        })
+        console.log(about);
+
+        //about,tag name are collection(array) so we need to access the first element
+        about[0].addEventListener("click", (event) => {
+            about[0].textContent = "About Us";
+            about[0].style.color = "green";
+        })
+        //while using querySelector no need to use array index
+        //about.addEventListener("click", (event) => {
+        //    about.textContent = "About Us";
+        //    about.style.color = "green";
+        //})
+
+        para[0].addEventListener("click", (event) => {
+            para[0].textContent = "This is a paragraph.";
+            para[0].style.color = "red";
+        })
+
+    </script>
+</body>
+
+</html>
