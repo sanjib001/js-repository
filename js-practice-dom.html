@@ -8,52 +8,83 @@
 </head>
 
 <body>
-    <div>count: <span id="count"></span></div>
-
-    <label>Enter your emial adress: </label>
-    <input type="text" name="email" placeholder="enter your email" id="email" />
-
+    <div>
+        count:<span id="count">0</span>
+    </div>
     <button id="increase-btn">Increase</button>
     <button id="decrease-btn">Decrease</button>
+
+    <div>
+        <label>Enter your emial adress:</label>
+        <input type="text" name="email" placeholder="enter your email" id="email" />
+    </div>
     <div>Output: <span id="output"></span></div>
     <button id="add-menu">Add menu</button>
 
     <script>
         let count_value = 0;
-        const countElement = document.querySelector("#count");
+        //grabbing the elements
+        const count = document.querySelector("#count");
+        const increase = document.querySelector("#increase-btn");
+        const decrease = document.querySelector("#decrease-btn");
+        const email = document.querySelector("#email");
+        const output = document.querySelector("#output");
+        const addMenu = document.querySelector("#add-menu");
 
-        const increaseElement = document.querySelector("#increase-btn");
-        const decreaseElement = document.querySelector("#decrease-btn");
-
-        const emailInputElemet = document.querySelector("#email");
-        const outputElement = document.querySelector("#output");
-        const addMenuElement = document.querySelector("#add-menu");
-
+        //function to handle events
         const handleIncreaseElement = (event) => {
             count_value = count_value + 1;
-            countElement.textContent = count_value;
+            count.textContent = count_value;
         }
 
-        const handleDecreaseElement =  (event) => {
+        const handleDecreaseElement = (event) => {
             count_value = count_value - 1;
-            countElement.textContent = count_value;
+            count.textContent = count_value;
+            increase.removeEventListener("click", handleIncreaseElement);
         }
 
         const handleInput = (event) => {
-            console.log(event.target.value)
-            console.log(event.target.name)
-            outputElement.textContent = event.target.value;
-            increaseElement.removeEventListener("click", handleIncreaseElement)
+            // console.log(event.target.value) //to show in console
+            // console.log(event.target.name)
+            output.textContent = event.target.value;
         }
 
+        //adding event listeners
+        increase.addEventListener("click", handleIncreaseElement)
+        decrease.addEventListener("click", handleDecreaseElement)
 
-        increaseElement.addEventListener("click", handleIncreaseElement)
-        decreaseElement.addEventListener("click", handleDecreaseElement)
+        email.addEventListener("input", handleInput)
+        addMenu.addEventListener("click", AddElementToMenu)
 
-         emailInputElement.addEventListener("input", handleInput)
-         addMenuElement.addEventListener("click", addElementDynamically)
-         
+        //function to add menu item
+        function AddElementToMenu() {
+            //creating ul and li and a elements
+            const ul = document.createElement("ul");
 
+            const liFirst = document.createElement("li");
+            const liSecond = document.createElement("li");
+            const liThird = document.createElement("li");
+
+            const anchorFirst = document.createElement("a");
+            const anchorSecond = document.createElement("a");
+            const anchorThird = document.createElement("a");
+
+            anchorFirst.textContent = "Home";
+            anchorSecond.textContent = "Contact";
+            anchorThird.textContent = "About";
+            
+            //assigning append child 
+            liFirst.appendChild(anchorFirst);
+            liSecond.appendChild(anchorSecond);
+            liThird.appendChild(anchorThird);
+
+            ul.appendChild(liFirst);
+            ul.appendChild(liSecond);
+            ul.appendChild(liThird);
+
+            console.log(ul); //to show in console
+            output.appendChild(ul);
+        }
 
     </script>
 
